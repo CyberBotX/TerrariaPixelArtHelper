@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Eyedropper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Eyedropper.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Wall_AdamantiteBeamWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_AdamantiteBeamWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_AmberGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_AmberGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_AmethystGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_AmethystGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_BlueBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_BlueBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_BlueDynastyWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_BlueDynastyWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_BluegreenWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_BluegreenWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_BlueSlabWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_BlueSlabWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_BlueTiledWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_BlueTiledWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_BoneBlockWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_BoneBlockWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_BorealWoodWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_BorealWoodWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_BubblegumBlockWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_BubblegumBlockWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_BubbleWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_BubbleWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_CactusWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_CactusWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_CandyCaneWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_CandyCaneWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_CandyCaneWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_CandyCaneWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_ChlorophyteBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_ChlorophyteBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_ChristmasTreeWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_ChristmasTreeWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_CloudWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_CloudWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_CobaltBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_CobaltBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_CopperBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_CopperBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_CopperPipeWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_CopperPipeWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_CopperPlatingWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_CopperPlatingWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_CrimtaneBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_CrimtaneBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_CrystalBlockWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_CrystalBlockWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_DemoniteBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_DemoniteBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_DiamondGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_DiamondGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_DirtWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_DirtWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_DiscWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_DiscWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_DuckyWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_DuckyWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_EbonstoneBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_EbonstoneBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_EbonwoodWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_EbonwoodWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_EmeraldGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_EmeraldGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_FancyGrayWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_FancyGrayWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_FestiveWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_FestiveWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_FleshBlockWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_FleshBlockWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_FlowerWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_FlowerWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GlassWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GlassWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GoldBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GoldBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GraniteWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GraniteWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GrassWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GrassWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GrayBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GrayBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GrayStuccoWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GrayStuccoWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GreenBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GreenBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GreenCandyCaneWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GreenCandyCaneWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GreenSlabWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GreenSlabWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GreenStuccoWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GreenStuccoWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GreenTiledWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GreenTiledWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_GrinchFingerWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_GrinchFingerWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_HayWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_HayWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_HellstoneBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_HellstoneBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_HiveWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_HiveWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_IceBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_IceBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_IceFloeWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_IceFloeWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_IridescentBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_IridescentBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_JungleWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_JungleWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_KrampusHornWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_KrampusHornWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_LihzahrdBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_LihzahrdBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_LivingWoodWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_LivingWoodWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_LuminiteBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_LuminiteBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_MarbleWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_MarbleWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_MartianConduitWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_MartianConduitWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_MeteoriteBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_MeteoriteBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_MudstoneBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_MudstoneBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_MushroomWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_MushroomWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_MusicWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_MusicWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_MythrilBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_MythrilBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_ObsidianBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_ObsidianBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_OfflineAmberGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_OfflineAmberGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_OfflineAmethystGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_OfflineAmethystGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_OfflineDiamondGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_OfflineDiamondGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_OfflineEmeraldGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_OfflineEmeraldGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_OfflineRubyGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_OfflineRubyGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_OfflineSapphireGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_OfflineSapphireGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_OfflineTopazGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_OfflineTopazGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_OrnamentWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_OrnamentWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_PalladiumColumnWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_PalladiumColumnWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_PalmWoodWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_PalmWoodWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_PearlstoneBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_PearlstoneBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_PearlwoodWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_PearlwoodWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_PinkBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_PinkBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_PinkSlabWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_PinkSlabWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_PinkTiledWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_PinkTiledWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_PlatinumBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_PlatinumBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_PumpkinWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_PumpkinWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_PurpleRainWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_PurpleRainWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_RainbowWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_RainbowWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_RedBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_RedBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_RedStuccoWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_RedStuccoWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_RichMahoganyWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_RichMahoganyWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_RubyGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_RubyGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_Sail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_Sail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SandstoneBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SandstoneBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SapphireGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SapphireGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_ShadewoodWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_ShadewoodWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_ShroomitePlatingWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_ShroomitePlatingWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SillyGreenBalloonWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SillyGreenBalloonWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SillyPinkBalloonWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SillyPinkBalloonWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SillyPurpleBalloonWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SillyPurpleBalloonWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SilverBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SilverBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SlimeBlockWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SlimeBlockWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SmoothGraniteWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SmoothGraniteWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SmoothMarbleWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SmoothMarbleWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SnowBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SnowBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SnowflakeWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SnowflakeWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SparkleStoneWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SparkleStoneWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SpookyWoodWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SpookyWoodWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_SquigglesWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_SquigglesWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_StarlitHeavenWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_StarlitHeavenWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_StarsWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_StarsWallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_StoneSlabWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_StoneSlabWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_StoneWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_StoneWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_TinBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_TinBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_TinPlatingWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_TinPlatingWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_TitanstoneBlockWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_TitanstoneBlockWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_TopazGemsparkWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_TopazGemsparkWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_TungstenBrickWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_TungstenBrickWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_WhiteDynastyWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_WhiteDynastyWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_WoodWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_WoodWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wall_YellowStuccoWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WallImages\Wall_YellowStuccoWall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>
