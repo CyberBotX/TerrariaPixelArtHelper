@@ -45,6 +45,7 @@ From a technical standpoint, the original color as well as all combinations are 
 * Tabbed interface to allow for multiple images to be loaded together
 * Some way to measure pixel distances
 * Possibly some way to show the original image
+* Some sort of exclusion system on walls and/or colors (so certain blocks won't be used when looking for closest color)
 
 ## Contact
 
