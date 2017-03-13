@@ -33,6 +33,7 @@ From a technical standpoint, the original color as well as all combinations are 
 
 * Walls with the Deep Sky Blue paint color show up differently in the program than they do in Terraria, but only in-game and not on the map. This is actually an issue with Terraria currently, and not Terraria Pixel Art Helper. I have sent Re-Logic a support ticket about it and they acknowledge that the issue is known but is low priority.
 * The program will momentarily freeze when loading images that are high in color count or dimensions.
+* Seems that sometimes walls will not be rendered as well as they should. I may need to take a closer look at Terraria's code to figure out what is wrong.
 
 ## Possible TODOs
 
@@ -46,6 +47,8 @@ From a technical standpoint, the original color as well as all combinations are 
 * Some way to measure pixel distances
 * Possibly some way to show the original image
 * Some sort of exclusion system on walls and/or colors (so certain blocks won't be used when looking for closest color)
+* A menu when right-clicking on pixels
+* Possibly a tooltip instead of or in addition to the status bar for showing what the current pixel is
 
 ## Contact
 
