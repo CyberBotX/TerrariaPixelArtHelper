@@ -234,7 +234,9 @@ namespace TerrariaPixelArtHelper
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.AddMessageFilter(new MouseWheelRedirector());
+			// The mouse wheel redirector doesn't work under Mono due to its lack of a WindowFromPoint function.
+			if (Type.GetType("Mono.Runtime") == null)
+				Application.AddMessageFilter(new MouseWheelRedirector());
 			Application.Run(new MainForm());
 #endif
 		}
