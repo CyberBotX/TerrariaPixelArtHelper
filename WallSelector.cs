@@ -39,21 +39,6 @@ namespace TerrariaPixelArtHelper
 
 		protected override void OnMeasureItem(MeasureItemEventArgs e) => e.ItemHeight = 18;
 
-		int currentIndex = -1;
-
-		protected override void OnSelectedIndexChanged(EventArgs e)
-		{
-			if (this.SelectedIndex != this.currentIndex)
-			{
-				this.currentIndex = this.SelectedIndex;
-				this.RefreshItem(this.SelectedIndex);
-				if (!this.IsHandleCreated)
-					base.OnSelectedIndexChanged(e);
-			}
-			else
-				base.OnSelectedIndexChanged(e);
-		}
-
 		[Browsable(false)]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		[SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This is overriding an existing property in the parent type and cannot be static.")]
