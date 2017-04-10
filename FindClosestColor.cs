@@ -116,10 +116,8 @@ namespace TerrariaPixelArtHelper
 		public void UpdateSelectedColorLabel() =>
 			this.lblSelectedColor.Text = FormattableString.Invariant($"({this.SelectedColor.R}, {this.SelectedColor.G}, {this.SelectedColor.B}, {this.SelectedColor.A})");
 
-		public void UpdateSelectedColorWall()
-		{
+		public void UpdateSelectedColorWall() =>
 			this.pnlWall.BackgroundImage = MainForm.GetWallFrame(this.selectedColorItem.WallItem.Name, this.selectedColorItem.Color, 0, 0, 0);
-		}
 
 		void lbColors_SelectedIndexChanged(object sender, EventArgs e)
 		{

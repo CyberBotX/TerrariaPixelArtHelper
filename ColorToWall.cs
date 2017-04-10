@@ -274,7 +274,7 @@ namespace TerrariaPixelArtHelper
 
 		void cbWall_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			var wallItemName = this.CurrentWallName;
+			string wallItemName = this.CurrentWallName;
 			this.cbWallColor.Enabled = wallItemName != "No Wall";
 
 			this.WallSelectorChanged?.Invoke(sender, new WallSelectorChangedEventArgs(this.Color, wallItemName, this.CurrentColorName));

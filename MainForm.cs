@@ -139,7 +139,7 @@ namespace TerrariaPixelArtHelper
 			int x = mouseArgs.X / 16;
 			int y = mouseArgs.Y / 16;
 			var color = MainForm.currentBitmap.GetPixel(x, y);
-			var colorIndex = MainForm.currentImageColors.Keys.ToList().IndexOf(color);
+			int colorIndex = MainForm.currentImageColors.Keys.ToList().IndexOf(color);
 			(this.flpColorToWall.Controls[colorIndex] as ColorToWall).Flash(500, Color.Red, 3);
 			this.flpColorToWall.ScrollControlIntoView(this.flpColorToWall.Controls[colorIndex]);
 		}
@@ -171,7 +171,7 @@ namespace TerrariaPixelArtHelper
 			if (x == MainForm.currentBitmap.Width || y == MainForm.currentBitmap.Height)
 				return;
 			var color = MainForm.currentBitmap.GetPixel(x, y);
-			var colorIndex = MainForm.currentImageColors.Keys.ToList().IndexOf(color);
+			int colorIndex = MainForm.currentImageColors.Keys.ToList().IndexOf(color);
 			var colorToWall = this.flpColorToWall.Controls[colorIndex] as ColorToWall;
 			this.tsslPipe.Visible = true;
 			this.tsslCurrentPixel.Text = FormattableString.Invariant($"Current Pixel: {x}, {y} | Currently Selected Wall: {colorToWall.SelectedWall}");
