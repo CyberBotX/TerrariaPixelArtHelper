@@ -1,0 +1,61 @@
+<UserControl x:Class="TerrariaPixelArtHelper.LoadingOverlay"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:fa5="http://schemas.fontawesome.com/icons/" xmlns:local="clr-namespace:TerrariaPixelArtHelper"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 d:DesignHeight="480" d:DesignWidth="640"
+			 mc:Ignorable="d">
+	<UserControl.DataContext>
+		<local:LoadingOverlayViewModel />
+	</UserControl.DataContext>
+	<Grid x:Name="overlay">
+		<Rectangle Opacity="0.5">
+			<Rectangle.Fill>
+				<SolidColorBrush Color="{StaticResource {x:Static SystemColors.ControlDarkDarkColorKey}}" />
+			</Rectangle.Fill>
+		</Rectangle>
+		<Grid x:Name="pleaseWaitGrid"
+			  Width="{c:Binding ActualWidth / 3,
+								ElementName=overlay,
+								Mode=OneWay}"
+			  Height="{c:Binding ActualHeight / 3,
+								 ElementName=overlay,
+								 Mode=OneWay}"
+			  HorizontalAlignment="Center" VerticalAlignment="Center"
+			  Panel.ZIndex="1"
+			  Visibility="{c:Binding ShowPleaseWait,
+									 Mode=OneWay}">
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition Height="Auto" />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.Background>
+				<SolidColorBrush Color="{StaticResource {x:Static SystemColors.ControlColorKey}}" />
+			</Grid.Background>
+			<TextBlock x:Name="pleaseWaitTextBlock"
+					   HorizontalAlignment="Center" VerticalAlignment="Center"
+					   FontSize="{c:Binding 'Math.Min(ActualHeight / 4, ActualWidth / 8)',
+											ElementName=pleaseWaitGrid,
+											Mode=OneWay}"
+					   Text="Please wait..." />
+			<TextBlock Grid.Row="1"
+					   HorizontalAlignment="Center"
+					   FontSize="{c:Binding 'FontSize / 2',
+											ElementName=pleaseWaitTextBlock,
+											Mode=OneWay}"
+					   Text="{Binding WaitMessage, Mode=OneWay}"
+					   Visibility="{c:Binding HasWaitMessage,
+											  Mode=OneWay}" />
+			<fa5:SvgAwesome Grid.Row="2"
+							Width="{c:Binding ActualHeight / 3,
+											  ElementName=pleaseWaitGrid,
+											  Mode=OneWay}"
+							Height="{c:Binding ActualHeight / 3,
+											   ElementName=pleaseWaitGrid,
+											   Mode=OneWay}"
+							HorizontalAlignment="Center" VerticalAlignment="Center"
+							Icon="Solid_CircleNotch" Spin="True" />
+		</Grid>
+	</Grid>
+</UserControl>

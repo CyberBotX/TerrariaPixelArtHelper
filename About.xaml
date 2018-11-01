@@ -1,0 +1,75 @@
+<Window x:Class="TerrariaPixelArtHelper.About"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:TerrariaPixelArtHelper"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		Title="About"
+		FocusManager.FocusedElement="{Binding ElementName=okButton, Mode=OneTime}"
+		ResizeMode="NoResize" ShowInTaskbar="False"
+		SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner"
+		WindowStyle="ThreeDBorderWindow"
+		mc:Ignorable="d">
+	<Window.Background>
+		<SolidColorBrush Color="{StaticResource {x:Static SystemColors.ControlColorKey}}" />
+	</Window.Background>
+	<StackPanel Margin="10">
+		<Label Padding="0"
+			   Content="{x:Static local:About.Version}"
+			   ContentStringFormat="Terraria Pixel Art Helper v{0} by: Naram Qashat (CyberBotX)" />
+		<TextBlock>
+			<Hyperlink NavigateUri="https://github.com/CyberBotX/TerrariaPixelArtHelper" RequestNavigate="Hyperlink_RequestNavigate">https://github.com/CyberBotX/TerrariaPixelArtHelper</Hyperlink>
+		</TextBlock>
+		<ContentControl Content="{StaticResource Lines}" />
+		<TextBlock>
+			<Run>Terraria is copyright to</Run>
+			<Hyperlink NavigateUri="https://re-logic.com/" RequestNavigate="Hyperlink_RequestNavigate">Re-Logic</Hyperlink>
+		</TextBlock>
+		<TextBlock Text="Program icon comes from Terraria" />
+		<ContentControl Content="{StaticResource Lines}" />
+		<TextBlock Text="Uses the font Roboto Mono by: Christian Robertson" />
+		<TextBlock>
+			<Hyperlink NavigateUri="https://fonts.google.com/specimen/Roboto+Mono" RequestNavigate="Hyperlink_RequestNavigate">https://fonts.google.com/specimen/Roboto+Mono</Hyperlink>
+		</TextBlock>
+		<ContentControl Content="{StaticResource Lines}" />
+		<GroupBox>
+			<GroupBox.BorderBrush>
+				<SolidColorBrush Color="{StaticResource {x:Static SystemColors.ControlDarkDarkColorKey}}" />
+			</GroupBox.BorderBrush>
+			<GroupBox.Header>
+				<TextBlock Height="17" Text="Utilizes the following libraries:" />
+			</GroupBox.Header>
+			<!-- Idea for AlternationCount and DataTemplate.Triggers comes from https://stackoverflow.com/a/34138980 -->
+			<ItemsControl Margin="2"
+						  AlternationCount="{Binding Items.Count, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+						  ItemsSource="{Binding Source={x:Static local:About.Libraries}, Mode=OneWay}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<ContentControl x:Name="Separator" Content="{StaticResource Lines}" />
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="{Binding Library, Mode=OneWay}" />
+								<TextBlock Text=" v" />
+								<TextBlock Text="{Binding Version, Mode=OneWay}" />
+								<TextBlock Text=" by: " />
+								<TextBlock Text="{Binding Author, Mode=OneWay}" />
+							</StackPanel>
+							<TextBlock>
+								<Hyperlink NavigateUri="{Binding Url, Mode=OneWay}" RequestNavigate="Hyperlink_RequestNavigate">
+									<Run Text="{Binding Url, Mode=OneWay}" />
+								</Hyperlink>
+							</TextBlock>
+						</StackPanel>
+						<DataTemplate.Triggers>
+							<Trigger Property="ItemsControl.AlternationIndex" Value="0">
+								<Setter TargetName="Separator" Property="Visibility" Value="Collapsed" />
+							</Trigger>
+						</DataTemplate.Triggers>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</GroupBox>
+		<Button x:Name="okButton"
+				Width="50"
+				Margin="0,5,0,0"
+				Click="OK_Click" Content="OK" />
+	</StackPanel>
+</Window>

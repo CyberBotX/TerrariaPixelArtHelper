@@ -8,7 +8,7 @@ Terraria Pixel Art Helper is a program designed to help determine what walls and
 
 (You only need to worry about this if you want to build it yourself instead of using the pre-built executables.)
 
-Terraria Pixel Art Helper uses C# 6 with the .NET Framework 4.6. You will need a minimum of Visual Studio 2015 to build the program.
+Terraria Pixel Art Helper uses C# 7.2 with the .NET Framework 4.6.2. You will need a minimum of Visual Studio 2017 to build the program.
 
 Normally you can just build the program normally, as all the required files are included. However, if you decide to modify the program to include or exclude certain walls, you will need to build the program in two steps, as follows:
 
@@ -19,7 +19,7 @@ Normally you can just build the program normally, as all the required files are 
 
 This program does not actually interface with Terraria in any way. Rather, it is meant to show what you will need to use within Terraria to represent pixel art using the game's walls.
 
-1. On loading the program, you must first load an image. This can be done from a file or from the clipboard. **NOTE:** It is recommended that you choose images with low color counts, as high color counts can slow the program down. If you try to load an image that contains more than 256 colors, you will be asked if you want to reduce the color count down to 256.
+1. On loading the program, you must first load an image. This can be done from a file or from the clipboard. **NOTE:** It is recommended that you choose images with low color counts, as high color counts can slow the program down or cause it to crash from running out of memory. If you try to load an image that contains more than 256 colors, you will be asked if you want to reduce the color count down to 256.
 2. Once the image is loaded, you can choose the walls and colors to use for each pixel color. This can either be done manually by selecting the wall and color, or it can be done semi-automatically with the "Find Closest Color" option (see below for more information about this option). "Reset" will remove the current wall and color from the pixel. You can also click on a pixel in the actual image to determine which pixel color it corresponds to (the section for that pixel will be scrolled into view and will flash red).
 3. After you have selected all the walls and colors, you will have a list of the number of walls and colors needed to represent the image in Terraria. The image's size will show up in the status bar, and when you hover a pixel in the actual image, you will see what wall and color is on that pixel in the status bar.
 
@@ -31,8 +31,7 @@ From a technical standpoint, the original color as well as all combinations are 
 
 ## Known Issues
 
-* Walls with the Deep Sky Blue paint color show up differently in the program than they do in Terraria, but only in-game and not on the map. This is actually an issue with Terraria currently, and not Terraria Pixel Art Helper. I have sent Re-Logic a support ticket about it and they acknowledge that the issue is known but is low priority.
-* The program will momentarily freeze when loading images that are high in color count or dimensions.
+* Walls with the Deep Sky Blue paint color show up differently in the program than they do in Terraria, but only in-game and not on the map. This is actually an issue with Terraria currently, and not Terraria Pixel Art Helper. I have sent Re-Logic a support ticket about it and they acknowledge that the issue is known but is low priority. I have made a note to look into making it so the user can toggle if they want Deep Sky Blue to show up as it does in the game or how it really should be.
 * Seems that sometimes walls will not be rendered as well as they should. I may need to take a closer look at Terraria's code to figure out what is wrong.
 
 ## Possible TODOs
@@ -42,7 +41,6 @@ From a technical standpoint, the original color as well as all combinations are 
 * Save and load functionality
 * Highlighting of blocks matching certain walls or colors
 * Showing the currently selected color of the wall and color combination for each pixel color
-* A throbber when loading images to prevent the UI from looking frozen
 * Tabbed interface to allow for multiple images to be loaded together
 * Some way to measure pixel distances
 * Possibly some way to show the original image
@@ -58,6 +56,19 @@ If you have any questions, comments or concerns about Terraria Pixel Art Helper:
 * Contact me on IRC: On the server jenna.cyberbotx.com (I will usually be under CyberBotX)
 * Submit an issue via [GitHub's issue tracker](https://github.com/CyberBotX/TerrariaPixelArtHelper/issues)
 
+## 3rd-Party Resources Utilized
+
+The following libraries have been utilized:
+
+* [CalcBinding](https://github.com/Alex141/CalcBinding) by Alexander Zinchenko
+* [FontAwesome5](https://github.com/MartinTopfstedt/FontAwesome5) by Codinion
+* [JeremyAnsel.ColorQuant](https://github.com/JeremyAnsel/JeremyAnsel.ColorQuant) by Jérémy Ansel
+* [Math.NET Numerics](https://numerics.mathdotnet.com/) by Christoph Ruegg, Marcus Cuda, Jurgen Van Gael
+* [PostSharp](https://www.postsharp.net/) by PostSharp Technologies
+* [WriteableBitmapEx](https://github.com/teichgraf/WriteableBitmapEx) by Schulte Software Development
+
+In addition, the font [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono) by Christian Robertson has been utilized.
+
 ## License
 
 Certain portions of this program contain resources and code from Terraria itself. This includes:
@@ -68,15 +79,16 @@ Certain portions of this program contain resources and code from Terraria itself
 * Colorizing the map colors of wall tiles also comes from decompiling the Terraria executable.
 * The names and IDs of the walls also comes from decompiling the Terraria executable.
 * The functionality to determine which wall tile to pick based on position and random number also comes from decompiling the Terraria executable.
+* The program icon comes from Terraria directly.
 
 I claim no ownership of the above items, they are copyright to [Re-Logic](https://re-logic.com/). (Any places where the above are used has been documented within the source code.)
 
-Except where noted within the source code (mainly code that came from Stack Overflow and was not mine originally), the rest of the program is licensed as follows:
+Except where noted within the source code (mainly code that came from Stack Overflow or elsewhere and was not mine originally), the rest of the program is licensed as follows:
 
 ```
 The MIT License (MIT)
 
-Copyright (c) 2013-2017 Naram Qashat
+Copyright (c) 2013-2018 Naram Qashat
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

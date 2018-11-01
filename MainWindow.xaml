@@ -1,0 +1,235 @@
+<Window x:Class="TerrariaPixelArtHelper.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:fa5="http://schemas.fontawesome.com/icons/" xmlns:local="clr-namespace:TerrariaPixelArtHelper"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
+		Title="Terraria Pixel Art Helper"
+		Width="1000" Height="500"
+		MinWidth="600" MinHeight="300"
+		Loaded="Window_Loaded" ResizeMode="CanResizeWithGrip"
+		WindowStyle="ThreeDBorderWindow"
+		mc:Ignorable="d">
+	<Window.Background>
+		<SolidColorBrush Color="{StaticResource {x:Static SystemColors.ControlColorKey}}" />
+	</Window.Background>
+	<Window.CommandBindings>
+		<CommandBinding Command="Close" Executed="Close_Executed" />
+		<CommandBinding Command="local:MainWindow.AboutCommand" Executed="About_Executed" />
+		<CommandBinding CanExecute="NoOverlay_CanExecute" Command="local:MainWindow.ToggleGridCommand"
+						Executed="ToggleGrid_Executed" />
+		<CommandBinding CanExecute="NoOverlay_CanExecute" Command="Open"
+						Executed="OpenFromFile_Executed" />
+		<CommandBinding CanExecute="OpenFromClipboard_CanExecute" Command="Paste"
+						Executed="OpenFromClipboard_Executed" />
+	</Window.CommandBindings>
+	<Window.DataContext>
+		<local:MainWindowViewModel />
+	</Window.DataContext>
+	<Window.InputBindings>
+		<KeyBinding Key="F4"
+					Command="Close" Modifiers="Alt" />
+	</Window.InputBindings>
+	<Window.Resources>
+		<Style x:Key="GridLinesStyle" TargetType="ItemsControl">
+			<Setter Property="ItemTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<Line IsHitTestVisible="False" Stroke="Black"
+							  StrokeDashArray="3 1" StrokeDashOffset="1.5"
+							  StrokeEndLineCap="Square" StrokeStartLineCap="Square"
+							  X1="{Binding X1, Mode=OneWay}"
+							  X2="{Binding X2, Mode=OneWay}"
+							  Y1="{Binding Y1, Mode=OneWay}"
+							  Y2="{Binding Y2, Mode=OneWay}" />
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="ItemsPanel">
+				<Setter.Value>
+					<ItemsPanelTemplate>
+						<Canvas />
+					</ItemsPanelTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+	<Grid>
+		<local:LoadingOverlay x:Name="overlay"
+							  Panel.ZIndex="1"
+							  Visibility="Hidden" />
+		<DockPanel>
+			<mwt:ClassicBorderDecorator BorderThickness="0,0,0,2" DockPanel.Dock="Top">
+				<Menu>
+					<MenuItem Header="_File">
+						<MenuItem Command="Open" Header="_Open from File...">
+							<MenuItem.Icon>
+								<fa5:SvgAwesome Icon="Solid_FolderOpen" />
+							</MenuItem.Icon>
+						</MenuItem>
+						<MenuItem Command="Paste" Header="Open from _Clipboard">
+							<MenuItem.Icon>
+								<fa5:SvgAwesome Icon="Solid_Paste" />
+							</MenuItem.Icon>
+						</MenuItem>
+						<Separator />
+						<MenuItem Command="Close" Header="E_xit"
+								  InputGestureText="Alt+F4">
+							<MenuItem.Icon>
+								<fa5:SvgAwesome Icon="Solid_DoorOpen" />
+							</MenuItem.Icon>
+						</MenuItem>
+					</MenuItem>
+					<MenuItem Header="_View">
+						<MenuItem Command="local:MainWindow.ToggleGridCommand" IsChecked="{Binding ShowGrid}" />
+					</MenuItem>
+					<MenuItem Header="_Help">
+						<MenuItem Command="local:MainWindow.AboutCommand">
+							<MenuItem.Icon>
+								<fa5:SvgAwesome Icon="Solid_QuestionCircle" />
+							</MenuItem.Icon>
+						</MenuItem>
+					</MenuItem>
+				</Menu>
+			</mwt:ClassicBorderDecorator>
+			<mwt:ClassicBorderDecorator BorderStyle="Sunken" BorderThickness="0,1,0,0"
+										DockPanel.Dock="Bottom">
+				<StatusBar>
+					<StackPanel Orientation="Horizontal" Visibility="{c:Binding ShowImageResolution, FalseToVisibility=Hidden, Mode=OneWay}">
+						<TextBlock Text="Image Size: " />
+						<TextBlock Text="{Binding ImageWidth, Mode=OneWay}" />
+						<TextBlock Text="x" />
+						<TextBlock Text="{Binding ImageHeight, Mode=OneWay}" />
+					</StackPanel>
+					<Separator Background="DarkGray" Visibility="{c:Binding ShowPixelStatus, Mode=OneWay}" />
+					<StackPanel Orientation="Horizontal" Visibility="{c:Binding ShowPixelStatus, Mode=OneWay}">
+						<TextBlock Text="Current Pixel: " />
+						<TextBlock Text="{Binding CurrentPixelX, Mode=OneWay}" />
+						<TextBlock Text=", " />
+						<TextBlock Text="{Binding CurrentPixelY, Mode=OneWay}" />
+					</StackPanel>
+					<Separator Background="DarkGray" Visibility="{c:Binding ShowPixelStatus, Mode=OneWay}" />
+					<TextBlock Text="{Binding CurrentColorToWall.DataContext.SelectedWallName, Mode=OneWay, StringFormat='Currently Selected Wall: {0}'}" Visibility="{c:Binding ShowPixelStatus, Mode=OneWay}" />
+				</StatusBar>
+			</mwt:ClassicBorderDecorator>
+			<Grid Margin="2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" MinWidth="358" />
+					<ColumnDefinition Width="2*" />
+				</Grid.ColumnDefinitions>
+				<mwt:ClassicBorderDecorator BorderStyle="Sunken" BorderThickness="2">
+					<ScrollViewer VerticalScrollBarVisibility="Auto">
+						<ItemsControl MaxWidth="354" ItemsSource="{Binding ColorToWallControls, Mode=OneWay}" />
+					</ScrollViewer>
+				</mwt:ClassicBorderDecorator>
+				<Grid Grid.Column="1" Margin="2">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="2*" />
+						<RowDefinition Height="2" />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+						<TextBlock Margin="2" Text="In-Game:" />
+						<TextBlock Grid.Column="1"
+								   Margin="2"
+								   Text="Map:" />
+						<mwt:ClassicBorderDecorator Grid.Row="1"
+													Margin="2"
+													BorderStyle="Sunken" BorderThickness="2"
+													UseLayoutRounding="True">
+							<ScrollViewer x:Name="inGameScrollViewer"
+										  HorizontalScrollBarVisibility="Auto" ScrollChanged="ScrollViewer_ScrollChanged"
+										  VerticalScrollBarVisibility="Auto">
+								<Grid Width="{c:Binding 'ImageWidth * 16 + 1',
+														Mode=OneWay}"
+									  Height="{c:Binding 'ImageHeight * 16 + 1',
+														 Mode=OneWay}"
+									  HorizontalAlignment="Left" VerticalAlignment="Top">
+									<Image HorizontalAlignment="Left" VerticalAlignment="Top"
+										   Cursor="/Eyedropper.cur" MouseLeave="Image_MouseLeave"
+										   MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove"
+										   Source="{Binding InGameBitmap, Mode=OneWay}"
+										   Stretch="None" />
+									<ItemsControl Panel.ZIndex="1"
+												  ItemsSource="{Binding GridLines, Mode=OneWay}"
+												  Style="{StaticResource GridLinesStyle}"
+												  Visibility="{c:Binding ShowGrid,
+																		 Mode=OneWay}" />
+								</Grid>
+							</ScrollViewer>
+						</mwt:ClassicBorderDecorator>
+						<mwt:ClassicBorderDecorator Grid.Row="1" Grid.Column="1"
+													Margin="2"
+													BorderStyle="Sunken" BorderThickness="2"
+													UseLayoutRounding="True">
+							<ScrollViewer x:Name="mapScrollViewer"
+										  HorizontalScrollBarVisibility="Auto" ScrollChanged="ScrollViewer_ScrollChanged"
+										  VerticalScrollBarVisibility="Auto">
+								<Grid Width="{c:Binding 'ImageWidth * 16 + 1',
+														Mode=OneWay}"
+									  Height="{c:Binding 'ImageHeight * 16 + 1',
+														 Mode=OneWay}"
+									  HorizontalAlignment="Left" VerticalAlignment="Top">
+									<Image HorizontalAlignment="Left" VerticalAlignment="Top"
+										   Cursor="/Eyedropper.cur" MouseLeave="Image_MouseLeave"
+										   MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseMove="Image_MouseMove"
+										   Source="{Binding MapBitmap, Mode=OneWay}"
+										   Stretch="None" />
+									<ItemsControl Panel.ZIndex="1"
+												  ItemsSource="{Binding GridLines, Mode=OneWay}"
+												  Style="{StaticResource GridLinesStyle}"
+												  Visibility="{c:Binding ShowGrid,
+																		 Mode=OneWay}" />
+								</Grid>
+							</ScrollViewer>
+						</mwt:ClassicBorderDecorator>
+					</Grid>
+					<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch">
+						<GridSplitter.Background>
+							<SolidColorBrush Color="{StaticResource {x:Static SystemColors.ControlDarkColorKey}}" />
+						</GridSplitter.Background>
+					</GridSplitter>
+					<Grid Grid.Row="2">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+						<TextBlock Grid.ColumnSpan="2"
+								   Margin="2"
+								   Text="To make the above, you'll need:" />
+						<TextBlock Grid.Row="1"
+								   Margin="2"
+								   Text="Walls:" />
+						<TextBlock Grid.Row="1" Grid.Column="1"
+								   Margin="2"
+								   Text="Colors:" />
+						<TextBox Grid.Row="2"
+								 Margin="2"
+								 FontFamily="{StaticResource RobotoMono}"
+								 HorizontalScrollBarVisibility="Auto" IsReadOnly="True"
+								 Text="{Binding WallsText, Mode=OneWay}"
+								 VerticalScrollBarVisibility="Visible" />
+						<TextBox Grid.Row="2" Grid.Column="1"
+								 Margin="2"
+								 FontFamily="{StaticResource RobotoMono}"
+								 HorizontalScrollBarVisibility="Auto" IsReadOnly="True"
+								 Text="{Binding ColorsText, Mode=OneWay}"
+								 VerticalScrollBarVisibility="Visible" />
+					</Grid>
+				</Grid>
+			</Grid>
+		</DockPanel>
+	</Grid>
+</Window>

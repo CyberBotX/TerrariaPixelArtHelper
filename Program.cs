@@ -1,17 +1,19 @@
-// Undefine the following to make the program only create the PNGs and resource file, see below.
+// Undefine the following to make the program only create the PNGs and update the project file, see below.
 //#define BUILD_WALLS
 
 using System;
 #if BUILD_WALLS
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Resources;
 using System.Linq;
-#else
-using System.Windows.Forms;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using Microsoft.Build.Evaluation;
 #endif
+
+[assembly: PostSharp.Patterns.Model.WeakEvent]
+[assembly: PostSharp.Patterns.Model.NotifyPropertyChanged(AttributeTargetTypes = "TerrariaPixelArtHelper.*ViewModel")]
 
 /// <remarks>
 /// See README.md for extra information regarding the license.
@@ -20,7 +22,7 @@ using System.Windows.Forms;
 ///
 /// The MIT License (MIT)
 ///
-/// Copyright(c) 2013-2017 Naram Qashat
+/// Copyright(c) 2013-2018 Naram Qashat
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -51,8 +53,8 @@ namespace TerrariaPixelArtHelper
 		static void Main()
 		{
 #if BUILD_WALLS
-			// This section, when enabled, will rebuild the PNG image files of all the acceptable walls, as well as update the resources file to contain all the walls as well as the eyedropper cursor.
-			// It does not run the WinForms application, and thus BUILD_WALLS should only be defined at the top of this file when the wall images need rebuilding.
+			// This section, when enabled, will rebuild the PNG image files of all the acceptable walls.
+			// It does not run the WPF application, and thus BUILD_WALLS should only be defined at the top of this file when the wall images need rebuilding.
 
 			var walls = new Dictionary<int, string>()
 			{
@@ -180,64 +182,64 @@ namespace TerrariaPixelArtHelper
 			// Set the below to the path of where you have the PNGs of Terraria's walls, extracted from their XNBs.
 			string terrariaImagesDirectory = Path.Combine("D:" + Path.DirectorySeparatorChar, "Users", "CyberBotX", "Downloads", "0_TerrariaAssets", "Images");
 
-			foreach (var file in new DirectoryInfo(Path.Combine("..", "..", "..", "WallImages")).EnumerateFiles())
-				file.Delete();
+			string wallImagesDirectory = Path.Combine("..", "..", "..", "WallImages");
+			if (Directory.Exists(wallImagesDirectory))
+				foreach (var file in new DirectoryInfo(wallImagesDirectory).EnumerateFiles())
+					file.Delete();
+			else
+				Directory.CreateDirectory(wallImagesDirectory);
 
-			// The following creates the stripped down versions of the walls
+			// Load the project, remove the old items for the WallImages, and create a new group to store the images.
+			var project = new Project(Path.Combine("..", "..", "..", "TerrariaPixelArtHelperWPF.csproj"));
+			foreach (var item in project.Xml.Items.Where(i => i.Include.StartsWith(@"WallImages\")))
+				item.Parent.RemoveChild(item);
+			foreach (var itemGroup in project.Xml.ItemGroups.Where(ig => ig.Count == 0))
+				project.Xml.RemoveChild(itemGroup);
+			var newItemGroup = project.Xml.AddItemGroup();
+
+			// The following creates the stripped down versions of the walls.
 			foreach (var kvp in walls)
 			{
-				var path = Path.Combine(terrariaImagesDirectory, FormattableString.Invariant($"Wall_{kvp.Key}.png"));
-				using (var bitmap = new Bitmap(path))
-					using (var newBitmap = new Bitmap(48, 80))
-					{
-						using (var g = Graphics.FromImage(newBitmap))
-						{
-							// The locations of these comes from Terraria.Framing for wall frame lookups 15-19
-							// The position is the X and Y points multiplied by 36 and then 8 added to them
-							// All the portions I an using are 16x16 in size
-							// Point 3 of each lookup is not used
-							g.DrawImage(bitmap, 0, 0, new Rectangle(44, 44, 16, 16), GraphicsUnit.Pixel); // Lookup 0, Point 0: 1, 1
-							g.DrawImage(bitmap, 16, 0, new Rectangle(80, 44, 16, 16), GraphicsUnit.Pixel); // Lookup 0, Point 1: 2, 1
-							g.DrawImage(bitmap, 32, 0, new Rectangle(116, 44, 16, 16), GraphicsUnit.Pixel); // Lookup 0, Point 2: 3, 1
-							g.DrawImage(bitmap, 0, 16, new Rectangle(224, 44, 16, 16), GraphicsUnit.Pixel); // Lookup 1, Point 0: 6, 1
-							g.DrawImage(bitmap, 16, 16, new Rectangle(260, 44, 16, 16), GraphicsUnit.Pixel); // Lookup 1, Point 1: 7, 1
-							g.DrawImage(bitmap, 32, 16, new Rectangle(296, 44, 16, 16), GraphicsUnit.Pixel); // Lookup 1, Point 2: 8, 1
-							g.DrawImage(bitmap, 0, 32, new Rectangle(224, 80, 16, 16), GraphicsUnit.Pixel); // Lookup 2, Point 0: 6, 2
-							g.DrawImage(bitmap, 16, 32, new Rectangle(260, 80, 16, 16), GraphicsUnit.Pixel); // Lookup 2, Point 1: 7, 2
-							g.DrawImage(bitmap, 32, 32, new Rectangle(296, 80, 16, 16), GraphicsUnit.Pixel); // Lookup 2, Point 2: 8, 2
-							g.DrawImage(bitmap, 0, 48, new Rectangle(368, 8, 16, 16), GraphicsUnit.Pixel); // Lookup 3, Point 0: 10, 0
-							g.DrawImage(bitmap, 16, 48, new Rectangle(368, 44, 16, 16), GraphicsUnit.Pixel); // Lookup 3, Point 1: 10, 1
-							g.DrawImage(bitmap, 32, 48, new Rectangle(368, 80, 16, 16), GraphicsUnit.Pixel); // Lookup 3, Point 2: 10, 2
-							g.DrawImage(bitmap, 0, 64, new Rectangle(404, 8, 16, 16), GraphicsUnit.Pixel); // Lookup 4, Point 0: 11, 0
-							g.DrawImage(bitmap, 16, 64, new Rectangle(404, 44, 16, 16), GraphicsUnit.Pixel); // Lookup 4, Point 1: 11, 1
-							g.DrawImage(bitmap, 32, 64, new Rectangle(404, 80, 16, 16), GraphicsUnit.Pixel); // Lookup 4, Point 2: 11, 2
-						}
-						newBitmap.Save(Path.Combine("..", "..", "..", "WallImages", FormattableString.Invariant($"Wall_{kvp.Value}.png")), ImageFormat.Png);
-					}
+				var bitmap = new WriteableBitmap(new BitmapImage(new Uri(Path.Combine(terrariaImagesDirectory, $"Wall_{kvp.Key}.png"), UriKind.Absolute)));
+				var newBitmap = new WriteableBitmap(App.WallPixelWidth, App.WallPixelHeight, 96, 96, PixelFormats.Bgra32, null);
+				// The locations of these comes from Terraria.Framing for wall frame lookups 15-19
+				// The position is the X and Y points multiplied by 36 and then 8 added to them
+				// All the portions I an using are 16x16 in size
+				// Point 3 of each lookup is not used
+				newBitmap.Blit(new Rect(0, 0, 16, 16), bitmap, new Rect(44, 44, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 0, Point 0: 1, 1
+				newBitmap.Blit(new Rect(16, 0, 16, 16), bitmap, new Rect(80, 44, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 0, Point 1: 2, 1
+				newBitmap.Blit(new Rect(32, 0, 16, 16), bitmap, new Rect(116, 44, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 0, Point 2: 3, 1
+				newBitmap.Blit(new Rect(0, 16, 16, 16), bitmap, new Rect(224, 44, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 1, Point 0: 6, 1
+				newBitmap.Blit(new Rect(16, 16, 16, 16), bitmap, new Rect(260, 44, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 1, Point 1: 7, 1
+				newBitmap.Blit(new Rect(32, 16, 16, 16), bitmap, new Rect(296, 44, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 1, Point 2: 8, 1
+				newBitmap.Blit(new Rect(0, 32, 16, 16), bitmap, new Rect(224, 80, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 2, Point 0: 6, 2
+				newBitmap.Blit(new Rect(16, 32, 16, 16), bitmap, new Rect(260, 80, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 2, Point 1: 7, 2
+				newBitmap.Blit(new Rect(32, 32, 16, 16), bitmap, new Rect(296, 80, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 2, Point 2: 8, 2
+				newBitmap.Blit(new Rect(0, 48, 16, 16), bitmap, new Rect(368, 8, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 3, Point 0: 10, 0
+				newBitmap.Blit(new Rect(16, 48, 16, 16), bitmap, new Rect(368, 44, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 3, Point 1: 10, 1
+				newBitmap.Blit(new Rect(32, 48, 16, 16), bitmap, new Rect(368, 80, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 3, Point 2: 10, 2
+				newBitmap.Blit(new Rect(0, 64, 16, 16), bitmap, new Rect(404, 8, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 4, Point 0: 11, 0
+				newBitmap.Blit(new Rect(16, 64, 16, 16), bitmap, new Rect(404, 44, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 4, Point 1: 11, 1
+				newBitmap.Blit(new Rect(32, 64, 16, 16), bitmap, new Rect(404, 80, 16, 16), WriteableBitmapExtensions.BlendMode.None); // Lookup 4, Point 2: 11, 2
+
+				using (var stream = File.Create(Path.Combine(wallImagesDirectory, $"Wall_{kvp.Value}.png")))
+				{
+					var encoder = new PngBitmapEncoder();
+					encoder.Frames.Add(BitmapFrame.Create(newBitmap));
+					encoder.Save(stream);
+				}
+
+				newItemGroup.AddItem("Resource", $@"WallImages\Wall_{kvp.Value}.png");
 			}
 
-			// The following recreates the resource file for the program
-			Directory.SetCurrentDirectory(Path.Combine("..", "..", "..", "Properties"));
-
-			using (var writer = new ResXResourceWriter("Resources.resx"))
-			{
-				writer.AddResource(new ResXDataNode("Eyedropper", new ResXFileRef(Path.Combine("..", "Eyedropper.cur"), typeof(byte[]).AssemblyQualifiedName)));
-				var BitmapAssemblyQualifiedName = typeof(Bitmap).AssemblyQualifiedName;
-				foreach (var kvp in walls.OrderBy(w => w.Value))
-					writer.AddResource(new ResXDataNode(FormattableString.Invariant($"Wall_{kvp.Value}"),
-						new ResXFileRef(Path.Combine("..", "WallImages", FormattableString.Invariant($"Wall_{kvp.Value}.png")), BitmapAssemblyQualifiedName)));
-
-				writer.Generate();
-			}
+			// Save over the project with the new references
+			project.Save();
 #else
-			// This section, when enabled, will run the actual WinForms application.
+			// This section, when enabled, will run the actual WPF application.
 
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			// The mouse wheel redirector doesn't work under Mono due to its lack of a WindowFromPoint function.
-			if (Type.GetType("Mono.Runtime") == null)
-				Application.AddMessageFilter(new MouseWheelRedirector());
-			Application.Run(new MainForm());
+#pragma warning disable IDE0022 // Use expression body for methods
+			App.Main();
+#pragma warning restore IDE0022 // Use expression body for methods
 #endif
 		}
 	}

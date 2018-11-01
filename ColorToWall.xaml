@@ -1,0 +1,105 @@
+<UserControl x:Class="TerrariaPixelArtHelper.ColorToWall"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:local="clr-namespace:TerrariaPixelArtHelper" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
+			 Width="350" Height="120"
+			 Margin="2"
+			 Background="Transparent"
+			 mc:Ignorable="d">
+	<UserControl.DataContext>
+		<local:ColorToWallViewModel />
+	</UserControl.DataContext>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="local:ColorToWall.Flash">
+			<BeginStoryboard>
+				<Storyboard FillBehavior="Stop">
+					<ColorAnimationUsingKeyFrames RepeatBehavior="3x" Storyboard.TargetProperty="Background.Color">
+						<DiscreteColorKeyFrame KeyTime="0:0:0" Value="Transparent" />
+						<DiscreteColorKeyFrame KeyTime="0:0:0.5" Value="Red" />
+						<DiscreteColorKeyFrame KeyTime="0:0:1" Value="Transparent" />
+					</ColorAnimationUsingKeyFrames>
+				</Storyboard>
+			</BeginStoryboard>
+		</EventTrigger>
+	</UserControl.Triggers>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="115" />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+		<mwt:ClassicBorderDecorator Grid.ColumnSpan="2"
+									BorderStyle="Sunken" BorderThickness="2" />
+		<StackPanel VerticalAlignment="Center" UseLayoutRounding="True">
+			<TextBlock HorizontalAlignment="Center" Text="Original:" />
+			<TextBlock HorizontalAlignment="Center" Text="{Binding ColorText}" />
+			<Canvas Width="75" Height="50">
+				<Rectangle Width="75" Height="50"
+						   Panel.ZIndex="2"
+						   Stroke="Black" />
+				<Line Panel.ZIndex="1"
+					  Stroke="Black" StrokeDashArray="3 1"
+					  StrokeDashOffset="0.5" X1="0.5"
+					  X2="74.5" Y1="25"
+					  Y2="25" />
+				<Rectangle Canvas.Left="0" Canvas.Top="0"
+						   Width="75" Height="25">
+					<Rectangle.Fill>
+						<SolidColorBrush Color="{Binding Color, Mode=OneWay}" />
+					</Rectangle.Fill>
+				</Rectangle>
+				<Rectangle Canvas.Left="0" Canvas.Top="25"
+						   Width="75" Height="25">
+					<Rectangle.Fill>
+						<SolidColorBrush Color="{Binding SelectedColor, Mode=OneWay}" />
+					</Rectangle.Fill>
+				</Rectangle>
+			</Canvas>
+			<TextBlock HorizontalAlignment="Center" Text="Selected:" />
+			<TextBlock HorizontalAlignment="Center" Text="{Binding SelectedColorText}" />
+		</StackPanel>
+		<StackPanel Grid.Column="1"
+					Margin="5,0" VerticalAlignment="Center">
+			<ComboBox x:Name="cbWall"
+					  IsTextSearchEnabled="False" MaxDropDownHeight="302"
+					  SelectedIndex="{Binding SelectedWallIndex}"
+					  SelectedItem="{Binding SelectedWall}"
+					  SelectionChanged="Wall_SelectionChanged">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<Image Width="16" Height="16"
+								   Margin="0,0,5,0"
+								   Source="{Binding Image, Mode=OneWay}" />
+							<TextBlock VerticalAlignment="Center" Text="{Binding Name, Mode=OneWay}" />
+						</StackPanel>
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
+			<ComboBox x:Name="cbWallColor"
+					  Margin="0,5"
+					  IsEnabled="{c:Binding 'SelectedIndex != 0',
+											ElementName=cbWall,
+											Mode=OneWay}"
+					  IsTextSearchEnabled="False" MaxDropDownHeight="322"
+					  SelectedIndex="{Binding SelectedWallColorIndex}"
+					  SelectedItem="{Binding SelectedWallColor}"
+					  SelectionChanged="Wall_SelectionChanged" />
+			<TextBlock Margin="0,0,0,5" HorizontalAlignment="Center"
+					   Text="{Binding NumberOfPixels, StringFormat='Number of Pixels: {0}', Mode=OneWay}" />
+			<StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+				<Button Margin="0,0,5,0" Padding="5,1"
+						Click="FindClosestColor_Click">
+					<Button.Content>
+						<StackPanel>
+							<TextBlock HorizontalAlignment="Center" Text="Find Closest" />
+							<TextBlock HorizontalAlignment="Center" Text="Color" />
+						</StackPanel>
+					</Button.Content>
+				</Button>
+				<Button Padding="5,1"
+						Click="ResetButton_Click" Content="Reset" />
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</UserControl>

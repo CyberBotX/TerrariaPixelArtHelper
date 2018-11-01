@@ -1,5 +1,6 @@
 using System;
-using System.Drawing;
+using System.Diagnostics;
+using System.Windows.Media;
 using MathNet.Numerics.LinearAlgebra;
 
 /// <remarks>
@@ -14,6 +15,7 @@ namespace TerrariaPixelArtHelper
 	/// Because I have attempted to calculate the matrices for conversions from RGB to XYZ, I have noticed that some of my L*a*b* values are slightly different
 	/// compared to most converters I have seen online. I'm not sure if my calculations are more accurate or less accurate as a result.
 	/// </remarks>
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public struct LAB : IEquatable<LAB>
 	{
 		/// <summary>Gets the L* value (lightness of the color).</summary>
@@ -24,6 +26,9 @@ namespace TerrariaPixelArtHelper
 
 		/// <summary>Gets the b* value (position between yellow and blue).</summary>
 		public double B { get; }
+
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		string DebuggerDisplay => $"L: {this.L}, A: {this.A}, B: {this.B}";
 
 		public LAB(double l, double a, double b)
 		{
@@ -44,6 +49,7 @@ namespace TerrariaPixelArtHelper
 		/// The white point chromaticity coordinate for CIE Illuminant D65.
 		/// </summary>
 		/// <remarks>
+		/// Calculation follows the Computation section from here: https://en.wikipedia.org/wiki/Standard_illuminant#Illuminant_series_D
 		/// The values calculated here are slightly different from the chromaticity coordinate listed here: https://en.wikipedia.org/wiki/Illuminant_D65
 		/// </remarks>
 		static readonly Lazy<double[]> wxy_chromaticity = new Lazy<double[]>(() =>
@@ -98,7 +104,7 @@ namespace TerrariaPixelArtHelper
 		/// </remarks>
 		/// <param name="t">The x, y or z value to convert.</param>
 		/// <returns>The converted value.</returns>
-		static double XYZf(double t) => t > LAB.deltaCubed ?  Math.Pow(t, 1.0 / 3.0) : t / (3 * LAB.deltaSquared) + 4.0 / 29.0;
+		static double XYZf(double t) => t > LAB.deltaCubed ? Math.Pow(t, 1.0 / 3.0) : t / (3 * LAB.deltaSquared) + 4.0 / 29.0;
 
 		/// <summary>
 		/// Converts a color from the sRGB color space to the CIE L*a*b* color space.
@@ -107,16 +113,16 @@ namespace TerrariaPixelArtHelper
 		/// <returns>The color in the CIE L*a*b* color space.</returns>
 		public static LAB FromRGB(Color sRGB)
 		{
-			// First we convert the color to CIE XYZ
+			// First we convert the color to CIE XYZ.
 			var XYZ = LAB.RGB_TO_XYZ * Matrix<double>.Build.DenseOfColumnMajor(3, 1, new[] { LAB.sRGBToLinear(sRGB.R / 255.0), LAB.sRGBToLinear(sRGB.G / 255.0), LAB.sRGBToLinear(sRGB.B / 255.0) });
 
-			// Then we apply the f(t) function to the CIE XYZ values with respect to the white point
+			// Then we apply the f(t) function to the CIE XYZ values with respect to the white point.
 			double x = LAB.XYZf(XYZ[0, 0] / LAB.D65[0]);
 			double y = LAB.XYZf(XYZ[1, 0] / LAB.D65[1]);
 			double z = LAB.XYZf(XYZ[2, 0] / LAB.D65[2]);
 
-			// Finally we convert the color to CIE L*a*b*
-			return new LAB((116.0 * y) - 16.0, 500.0 * (x - y), 200.0 * (y - z));
+			// Finally we convert the color to CIE L*a*b*.
+			return new LAB(116.0 * y - 16.0, 500.0 * (x - y), 200.0 * (y - z));
 		}
 
 		/// <summary>
@@ -134,16 +140,14 @@ namespace TerrariaPixelArtHelper
 			return Math.Sqrt(deltaL * deltaL + deltaA * deltaA + deltaB * deltaB);
 		}
 
-		public override bool Equals(object obj) => obj != null && obj is LAB && this.Equals((LAB)obj);
+		public override bool Equals(object obj) => obj is LAB lab && this.Equals(lab);
 
 		public bool Equals(LAB other) => this == other;
 
-		public static bool operator==(LAB lab1, LAB lab2) => lab1.L == lab2.L && lab1.A == lab2.A && lab1.B == lab2.B;
+		public static bool operator ==(LAB lab1, LAB lab2) => lab1.L == lab2.L && lab1.A == lab2.A && lab1.B == lab2.B;
 
-		public static bool operator!=(LAB lab1, LAB lab2) => !(lab1 == lab2);
+		public static bool operator !=(LAB lab1, LAB lab2) => !(lab1 == lab2);
 
 		public override int GetHashCode() => this.L.GetHashCode() ^ this.A.GetHashCode() ^ this.B.GetHashCode();
-
-		public override string ToString() => FormattableString.Invariant($"L: {this.L}, A: {this.A}, B: {this.B}");
 	}
 }
