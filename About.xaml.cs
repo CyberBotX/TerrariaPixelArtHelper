@@ -21,42 +21,42 @@ namespace TerrariaPixelArtHelper
 				Library = "CalcBinding",
 				Version = typeof(CalcBinding.Binding).Assembly.GetName().Version,
 				Author = "Alexander Zinchenko",
-				Url = "https://github.com/Alex141/CalcBinding"
+				Url = new Uri("https://github.com/Alex141/CalcBinding")
 			},
 			new LibraryData()
 			{
 				Library = "FontAwesome5",
 				Version = typeof(FontAwesome5.WPF.FontAwesome).Assembly.GetName().Version,
 				Author = "Codinion",
-				Url = "https://github.com/MartinTopfstedt/FontAwesome5"
+				Url = new Uri("https://github.com/MartinTopfstedt/FontAwesome5")
 			},
 			new LibraryData()
 			{
 				Library = "JeremyAnsel.ColorQuant",
 				Version = typeof(JeremyAnsel.ColorQuant.WuColorQuantizer).Assembly.GetName().Version,
 				Author = "Jérémy Ansel",
-				Url = "https://github.com/JeremyAnsel/JeremyAnsel.ColorQuant"
+				Url = new Uri("https://github.com/JeremyAnsel/JeremyAnsel.ColorQuant")
 			},
 			new LibraryData()
 			{
 				Library = "Math.NET Numerics",
 				Version = typeof(MathNet.Numerics.Constants).Assembly.GetName().Version,
 				Author = "Christoph Ruegg, Marcus Cuda, Jurgen Van Gael",
-				Url = "https://numerics.mathdotnet.com/"
+				Url = new Uri("https://numerics.mathdotnet.com/")
 			},
 			new LibraryData()
 			{
 				Library = "PostSharp",
 				Version = typeof(PostSharp.Post).Assembly.GetName().Version,
 				Author = "PostSharp Technologies",
-				Url = "https://www.postsharp.net/"
+				Url = new Uri("https://www.postsharp.net/")
 			},
 			new LibraryData()
 			{
 				Library = "WriteableBitmapEx",
 				Version = typeof(System.Windows.Media.Imaging.BitmapFactory).Assembly.GetName().Version,
 				Author = "Schulte Software Development",
-				Url = "https://github.com/teichgraf/WriteableBitmapEx"
+				Url = new Uri("https://github.com/teichgraf/WriteableBitmapEx")
 			}
 		};
 
@@ -77,6 +77,6 @@ namespace TerrariaPixelArtHelper
 
 		public Version Version { get; set; }
 
-		public string Url { get; set; }
+		public Uri Url { get; set; }
 	}
 }

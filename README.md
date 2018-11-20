@@ -40,7 +40,6 @@ From a technical standpoint, the original color as well as all combinations are 
 
 * Save and load functionality
 * Highlighting of blocks matching certain walls or colors
-* Showing the currently selected color of the wall and color combination for each pixel color
 * Tabbed interface to allow for multiple images to be loaded together
 * Some way to measure pixel distances
 * Possibly some way to show the original image
@@ -54,6 +53,7 @@ If you have any questions, comments or concerns about Terraria Pixel Art Helper:
 
 * Contact me by email: cyberbotx@cyberbotx.com (please include Terraria Pixel Art Helper in the subject line)
 * Contact me on IRC: On the server jenna.cyberbotx.com (I will usually be under CyberBotX)
+* Contact me on Discord: CyberBotX#8477
 * Submit an issue via [GitHub's issue tracker](https://github.com/CyberBotX/TerrariaPixelArtHelper/issues)
 
 ## 3rd-Party Resources Utilized

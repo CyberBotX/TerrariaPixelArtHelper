@@ -148,6 +148,6 @@ namespace TerrariaPixelArtHelper
 
 		public static bool operator !=(LAB lab1, LAB lab2) => !(lab1 == lab2);
 
-		public override int GetHashCode() => this.L.GetHashCode() ^ this.A.GetHashCode() ^ this.B.GetHashCode();
+		public override int GetHashCode() => (this.L, this.A, this.B).GetHashCode();
 	}
 }
